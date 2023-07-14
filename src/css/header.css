@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.logo img{
+    width: 100px;
+}
+
+.nav-items > ul {
+    display: flex;
+    list-style: none;
+    margin-top: 1.5em;
+    align-items: center;
+    margin-right: 1.1em;
+}
+
+.nav-items li {
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2em;
+}
+
+.loginBtn{
+    padding: 0px 15px;
+    cursor: pointer;
+}
