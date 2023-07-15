@@ -3,6 +3,7 @@ import "../css/body.css";
 import { useState, useEffect } from "react";
 import { SWIGGY_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
 
@@ -23,7 +24,7 @@ const Body = () => {
     setFilteredRestaurants(jsonData?.data?.cards[2]?.data?.data?.cards);
 
 
-    console.log(filteredRestaurants);
+    // console.log(filteredRestaurants);
   }
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const Body = () => {
   }, []);
 
   // If listOfRestaurants is empty we will show a spinning screen
-
+  console.log(filteredRestaurants);
   return listOfRestaurants.length === 0 ? <Shimmer></Shimmer> : (
     <div className="body">
       <div className="filter">
@@ -63,7 +64,7 @@ const Body = () => {
       <div className="res-container">
         {/* Restaurant Card here as a Separate Component */}
         {filteredRestaurants.map((restaurant) => {
-          return <ResCard key={restaurant.data.id} resData={restaurant} />;
+          return <Link key={restaurant.data.id} to={"/restaurants/"+restaurant.data.id}> <ResCard key={restaurant.data.id} resData={restaurant} /> </Link>;
         })}
       </div>
     </div>

@@ -1,0 +1,11 @@
+const About = ()=> {
+    return (
+        <div>
+            <h1>About</h1>
+            <h2>Welcome to Namaste React</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est numquam, quidem quod facere architecto iste cum? Debitis velit a consequuntur officia. Dignissimos illum pariatur voluptatem? Consequuntur.</p>
+        </div>
+    );
+}
+
+export default About;
