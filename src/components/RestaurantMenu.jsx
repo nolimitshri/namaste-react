@@ -1,30 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable react/prop-types */
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 
-import { RES_API_FR } from "../utils/constants"; 
-
 const RestaurantMenu = () => {
-    console.log("Rendering")
-    const [resInfo, setResInfo] = useState(null);
 
     const {resId} = useParams();
 
-    useEffect(() => {
-        fetchMenu();
-    }, []);
-
-    const fetchMenu = async() => {
-        const data  = await fetch(`${RES_API_FR}${resId}`, {mode: "cors"});
-        
-        const json = await data.json();
-
-        setResInfo(json.data);
-    }
+    const resInfo  = useRestaurantMenu(resId);
 
     if(resInfo === null){
         return <Shimmer/>
@@ -32,9 +20,9 @@ const RestaurantMenu = () => {
     
     const {name, costForTwoMessage, cuisines} = resInfo?.cards[0]?.card?.card?.info;
 
-    const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+    // const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+    const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
-    console.log(itemCards);
 
 
     return (

@@ -5,15 +5,23 @@ import { SWIGGY_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 
+import useOnlineStatus from "../utils/useOnlineStatus";
+// import useListOfRestaurants from "../utils/useListOfRestaurants";
+
 const Body = () => {
 
-  console.log("Rendered!!!")
+  // console.log("Rendered!!!")
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
 
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
 
   const [searchText, setSearchText] = useState([]);
+
+
+  // const listOfRestaurants = useListOfRestaurants();
+  // setFilteredRestaurants(listOfRestaurants)
+
 
   const fetchData = async () => {
     const data = await fetch(SWIGGY_API, {mode: 'cors'});
@@ -23,8 +31,6 @@ const Body = () => {
     setListOfRestaurants(jsonData?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestaurants(jsonData?.data?.cards[2]?.data?.data?.cards);
 
-
-    // console.log(filteredRestaurants);
   }
 
   useEffect(() => {
@@ -32,7 +38,16 @@ const Body = () => {
   }, []);
 
   // If listOfRestaurants is empty we will show a spinning screen
-  console.log(filteredRestaurants);
+  // console.log(filteredRestaurants);
+
+  const onlineStatus = useOnlineStatus();
+
+  if(!onlineStatus){
+    return (
+      <h1>Looks like you are offline. Please check your router..</h1>
+    )
+  }
+
   return listOfRestaurants.length === 0 ? <Shimmer></Shimmer> : (
     <div className="body">
       <div className="filter">
