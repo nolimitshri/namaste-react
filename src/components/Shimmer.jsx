@@ -1,28 +1,21 @@
-import '../css/shimmer.css'
-
 const Shimmer = () => {
     return (
-        <div className="shimmer-container">
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
+        <div className="flex flex-wrap justify-center">
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
+            <div className="m-4 p-4 w-[250px] h-[250px] bg-slate-200 rounded-md hover:bg-slate-300"></div>
         </div>
     )
 }

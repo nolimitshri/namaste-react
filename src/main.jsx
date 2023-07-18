@@ -5,7 +5,7 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Error from './components/Error'
 import RestaurantMenu from './components/RestaurantMenu'
-import './css/main.css'
+import '../index.css'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { lazy, Suspense } from 'react'

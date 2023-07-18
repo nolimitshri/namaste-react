@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import '../css/resCard.css';
 import { CDN_URL } from '../utils/constants';
 
 const ResCard = (props) => {
@@ -9,9 +8,9 @@ const ResCard = (props) => {
     const {name, cuisines, costForTwo, avgRating, cloudinaryImageId, deliveryTime} = resData?.data;
 
     return (
-        <div className="res-card">
-            <img className='res-logo' src={CDN_URL+cloudinaryImageId} alt="restaurant logo" />
-            <h3>{name}</h3>
+        <div className="m-4 p-4 w-[250px] bg-slate-200 rounded-md hover:bg-slate-300">
+            <img className='res-logo rounded-md' src={CDN_URL+cloudinaryImageId} alt="restaurant logo" />
+            <h3 className='font-bold text-center py-3 text-lg'>{name}</h3>
             <h6>{cuisines.join(", ")}</h6>
             <h4>{avgRating} ⭐</h4>
             <h4>{costForTwo / 100} FOR TWO</h4>

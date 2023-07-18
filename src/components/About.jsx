@@ -1,6 +1,4 @@
 import UserComp from "./UserComp";
-import '../css/about.css'
-
 
 const About = ()=> {
     return (

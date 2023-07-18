@@ -1,4 +1,3 @@
-import '../css/header.css'
 import { LOGO_URL } from '../utils/constants';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -7,32 +6,39 @@ import useOnlineStatus from '../utils/useOnlineStatus';
 const Header = () => {
 
     const [btnName, setBtnName] = useState("Login");
+    const [btnClass, setBtnClass] = useState("bg-green-300 hover:bg-green-400")
     const onlineStatus = useOnlineStatus();
     return (
-        <div className="header">
+        <div className="flex justify-between shadow-md" style={{backgroundColor: 'rgb(255,241,176,1)'}}>
             <div className="logo">
-                <img src={LOGO_URL}  alt="Company Logo here" />
+                <img className='w-28 ml-4' src={LOGO_URL}  alt="Company Logo here" />
             </div>
-            <div className="nav-items">
-                <ul>
-                    <li>
+            <div className="flex items-center">
+                <ul className='flex p-4 m-4'>
+                    <li className='px-3 mt-1.5'>
                         Status: {onlineStatus ? "✅" : "🔴"}
                     </li>
-                    <li>
-                        <Link to="/">Home</Link>
+                    <li className='px-3 mt-1.5'>
+                        <Link to="/" className='hover:underline'>Home</Link>
                     </li>
-                    <li>
+                    <li className='px-3 mt-1.5'>
                         <Link to="/about">About Us</Link>
                     </li>
-                    <li>
+                    <li className='px-3 mt-1.5'>
                         <Link to="/contact">Contact</Link>
                     </li>
-                    <li>Cart</li>
-                    <li>
+                    <li className='px-3 mt-1.5'>Cart</li>
+                    <li className='px-3 mt-1.5'>
                         <Link to="/grocery">Grocery</Link>
                     </li>
-                    <button className='loginBtn' onClick={() => {
-                            btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
+                    <button className={`font-semibold rounded-lg px-2 py-[7px] ${btnClass}`} onClick={() => {
+                            if(btnName === "Login"){
+                                setBtnName("Logout");
+                                setBtnClass("bg-red-300 hover:bg-red-400");
+                            } else {
+                                setBtnName("Login")
+                                setBtnClass("bg-green-300");
+                            }
                         }}>
                         {btnName}
                     </button>

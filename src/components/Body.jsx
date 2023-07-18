@@ -1,5 +1,4 @@
 import ResCard from "./ResCard";
-import "../css/body.css";
 import { useState, useEffect } from "react";
 import { SWIGGY_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
@@ -50,12 +49,12 @@ const Body = () => {
 
   return listOfRestaurants.length === 0 ? <Shimmer></Shimmer> : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
-          <input type="text" className="search-box" value={searchText} onChange={(e) => {
+      <div className="flex ">
+        <div className="search m-4 p-4">
+          <input type="text" className="p-1 rounded-md border border-solid border-black" value={searchText} onChange={(e) => {
             setSearchText(e.target.value);
           }}/>
-          <button className="search-btn" onClick={() => {
+          <button className="px-1 py-1.5 bg-blue-400 ml-3 rounded-lg" onClick={() => {
 
             const filteredList = listOfRestaurants.filter(
               (res) => res.data.name.toLowerCase().includes(searchText.toLowerCase())
@@ -64,19 +63,21 @@ const Body = () => {
             setFilteredRestaurants(filteredList);
           }}>Search</button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredList = listOfRestaurants.filter(
-              (res) => res.data.avgRating > 4
-            );
-            setFilteredRestaurants(filteredList);
-          }}
-        >
-          Top Rated Restraunts
-        </button>
+        <div className="my-4 p-4">
+          <button
+            className="px-4 py-1.5 bg-gray-200 rounded-lg"
+            onClick={() => {
+              const filteredList = listOfRestaurants.filter(
+                (res) => res.data.avgRating > 4
+              );
+              setFilteredRestaurants(filteredList);
+            }}
+          >
+            Top Rated Restraunts
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap justify-center">
         {/* Restaurant Card here as a Separate Component */}
         {filteredRestaurants.map((restaurant) => {
           return <Link key={restaurant.data.id} to={"/restaurants/"+restaurant.data.id}> <ResCard key={restaurant.data.id} resData={restaurant} /> </Link>;
