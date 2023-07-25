@@ -1,4 +1,4 @@
-import ResCard from "./ResCard";
+import ResCard, {withPromotedLabel} from "./ResCard";
 import { useState, useEffect } from "react";
 import { SWIGGY_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
@@ -21,6 +21,9 @@ const Body = () => {
   // const listOfRestaurants = useListOfRestaurants();
   // setFilteredRestaurants(listOfRestaurants)
 
+  const RestaurantCardPromoted = withPromotedLabel(ResCard);
+
+  console.log("Body Rendered... ", listOfRestaurants);
 
   const fetchData = async () => {
     const data = await fetch(SWIGGY_API, {mode: 'cors'});
@@ -80,7 +83,9 @@ const Body = () => {
       <div className="flex flex-wrap justify-center">
         {/* Restaurant Card here as a Separate Component */}
         {filteredRestaurants.map((restaurant) => {
-          return <Link key={restaurant.data.id} to={"/restaurants/"+restaurant.data.id}> <ResCard key={restaurant.data.id} resData={restaurant} /> </Link>;
+          return <Link key={restaurant.data.id} to={"/restaurants/"+restaurant.data.id}> 
+            {restaurant.data.promoted ? (<RestaurantCardPromoted resData={restaurant} />) : (<ResCard resData={restaurant} />)}
+          </Link>;
         })}
       </div>
     </div>

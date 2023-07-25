@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
 import { CDN_URL } from '../utils/constants';
 
@@ -17,6 +18,19 @@ const ResCard = (props) => {
             <h4>{deliveryTime} mins</h4>
         </div>
     )
+};
+
+export const withPromotedLabel = (ResCard) => {
+    return (props) => {
+        return (
+            <>
+                <div>
+                    <label className='p-1 ml-4 absolute bg-black text-white rounded-lg'>Promoted</label>
+                    <ResCard {...props}/>
+                </div>
+            </>
+        );
+    };
 };
 
 export default ResCard;
