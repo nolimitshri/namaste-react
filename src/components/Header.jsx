@@ -2,12 +2,19 @@ import { LOGO_URL } from '../utils/constants';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
 
     const [btnName, setBtnName] = useState("Login");
     const [btnClass, setBtnClass] = useState("bg-green-300 hover:bg-green-400")
     const onlineStatus = useOnlineStatus();
+
+    // Subscribing to the store
+    const cartItems = useSelector((store) => store.cart.items)
+
+    console.log(cartItems);
+
     return (
         <div className="flex justify-between shadow-md" style={{backgroundColor: 'rgb(255,241,176,1)'}}>
             <div className="logo">
@@ -27,7 +34,10 @@ const Header = () => {
                     <li className='px-3 mt-1.5'>
                         <Link to="/contact">Contact</Link>
                     </li>
-                    <li className='px-3 mt-1.5'>Cart</li>
+                    {/* Show the np. of items */}
+                    <li className='px-3 mt-1 font-bold text-xl'>
+                        <Link to="/cart">Cart - ({cartItems.length} items)</Link>
+                    </li>
                     <li className='px-3 mt-1.5'>
                         <Link to="/grocery">Grocery</Link>
                     </li>

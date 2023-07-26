@@ -5,6 +5,7 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Error from './components/Error'
 import RestaurantMenu from './components/RestaurantMenu'
+import Cart from './components/Cart'
 import '../index.css'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -38,6 +39,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/grocery',
         element: <Suspense fallback={<h1>Loading....</h1>}> <Grocery /> </Suspense> 
+      },
+      {
+        path: '/cart',
+        element: <Cart/>
       }
     ],
     errorElement: <Error/>
