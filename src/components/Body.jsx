@@ -29,9 +29,8 @@ const Body = () => {
     const data = await fetch(SWIGGY_API, {mode: 'cors'});
 
     const jsonData = await data.json();
-
-    setListOfRestaurants(jsonData?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(jsonData?.data?.cards[2]?.data?.data?.cards);
+    setListOfRestaurants(jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurants(jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
   }
 
@@ -60,7 +59,7 @@ const Body = () => {
           <button className="px-1 py-1.5 bg-blue-400 ml-3 rounded-lg" onClick={() => {
 
             const filteredList = listOfRestaurants.filter(
-              (res) => res.data.name.toLowerCase().includes(searchText.toLowerCase())
+              (res) => res?.info.name.toLowerCase().includes(searchText.toLowerCase())
             );
 
             setFilteredRestaurants(filteredList);
@@ -71,7 +70,7 @@ const Body = () => {
             className="px-4 py-1.5 bg-gray-200 rounded-lg"
             onClick={() => {
               const filteredList = listOfRestaurants.filter(
-                (res) => res.data.avgRating > 4
+                (res) => res?.info.avgRating > 4
               );
               setFilteredRestaurants(filteredList);
             }}
@@ -83,8 +82,8 @@ const Body = () => {
       <div className="flex flex-wrap justify-center">
         {/* Restaurant Card here as a Separate Component */}
         {filteredRestaurants.map((restaurant) => {
-          return <Link key={restaurant.data.id} to={"/restaurants/"+restaurant.data.id}> 
-            {restaurant.data.promoted ? (<RestaurantCardPromoted resData={restaurant} />) : (<ResCard resData={restaurant} />)}
+          return <Link key={restaurant?.info.id} to={"/restaurants/"+restaurant?.info.id}> 
+            {restaurant?.info.promoted ? (<RestaurantCardPromoted resData={restaurant?.info} />) : (<ResCard resData={restaurant?.info} />)}
           </Link>;
         })}
       </div>
