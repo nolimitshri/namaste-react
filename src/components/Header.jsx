@@ -13,8 +13,6 @@ const Header = () => {
     // Subscribing to the store
     const cartItems = useSelector((store) => store.cart.items)
 
-    console.log(cartItems);
-
     return (
         <div className="flex justify-between shadow-md" style={{backgroundColor: 'rgb(255,241,176,1)'}}>
             <div className="logo">
