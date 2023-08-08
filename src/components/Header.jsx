@@ -1,8 +1,13 @@
-import { LOGO_URL } from '../utils/constants';
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import { useSelector } from 'react-redux';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+import "../css/header.css";
 
 const Header = () => {
 
@@ -12,44 +17,37 @@ const Header = () => {
 
     // Subscribing to the store
     const cartItems = useSelector((store) => store.cart.items)
+    // style={{backgroundColor: "rgba(252, 202, 17, 1)"}}
 
     return (
-        <div className="flex justify-between shadow-md" style={{backgroundColor: 'rgb(255,241,176,1)'}}>
-            <div className="logo">
-                <img className='w-28 ml-4' src={LOGO_URL}  alt="Company Logo here" />
+        <div className="fixed shadow-lg h-[10vh] w-[100%] z-[100] flex bg-slate-200 items-center">
+            {/* Title and Search Bar */}
+            <div className='w-5/12 flex items-center justify-between p-4'>
+                <h1 className='text-2xl font-bold'><span className='text-gray-500'>Grub</span><span className='text-yellow-500'>Express</span></h1>
+                <div>
+                    <input style={{outline: "none"}} type="text" className='mr-2 p-1 rounded-md' placeholder='Search by City'/>
+                    <button className='border border-yellow-500 bg-yellow-500 text-white font-semibold p-1 rounded-md'>Search</button>
+                </div>
             </div>
-            <div className="flex items-center">
-                <ul className='flex p-4 m-4'>
-                    <li className='px-3 mt-1.5'>
-                        Status: {onlineStatus ? "✅" : "🔴"}
+            {/* Showing the Menu Items */}
+            <div className='w-7/12 flex'>
+                <div className='w-6/12'></div>
+                <ul className='flex justify-evenly'>
+                    <li className='mx-4'>
+                        <Link to="/" className='text-xl tracking-wide hover-effect'>HOME</Link>
                     </li>
-                    <li className='px-3 mt-1.5'>
-                        <Link to="/" className='hover:underline'>Home</Link>
+                    <li className='mx-4'>
+                        <Link to="/about" className='text-xl tracking-wide hover-effect'>ABOUT</Link>
                     </li>
-                    <li className='px-3 mt-1.5'>
-                        <Link to="/about">About Us</Link>
+                    <li className='mx-4'>
+                        <Link to="/contact" className='text-xl tracking-wide hover-effect'>CONTACT</Link>
                     </li>
-                    <li className='px-3 mt-1.5'>
-                        <Link to="/contact">Contact</Link>
+                    <li className='mx-4 '>
+                        <Link to="/cart" className='text-xl tracking-wide hover-effect'>
+                            <FontAwesomeIcon icon={faShoppingCart} />
+                            {cartItems.length > 0 && <span className="ml-1 text-lg">{cartItems.length}</span>}
+                        </Link>
                     </li>
-                    {/* Show the np. of items */}
-                    <li className='px-3 mt-1 font-bold text-xl'>
-                        <Link to="/cart">Cart - ({cartItems.length} items)</Link>
-                    </li>
-                    <li className='px-3 mt-1.5'>
-                        <Link to="/grocery">Grocery</Link>
-                    </li>
-                    <button className={`font-semibold rounded-lg px-2 py-[7px] ${btnClass}`} onClick={() => {
-                            if(btnName === "Login"){
-                                setBtnName("Logout");
-                                setBtnClass("bg-red-300 hover:bg-red-400");
-                            } else {
-                                setBtnName("Login")
-                                setBtnClass("bg-green-300");
-                            }
-                        }}>
-                        {btnName}
-                    </button>
                 </ul>
             </div>
         </div>

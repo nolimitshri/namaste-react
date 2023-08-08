@@ -7,6 +7,8 @@ import { CDN_URL } from '../utils/constants';
 const ResCard = (props) => {
     const {resData} = props;
 
+    console.log(resData);
+
     // eslint-disable-next-line no-unsafe-optional-chaining
     const {
         name,
@@ -18,12 +20,11 @@ const ResCard = (props) => {
       } = resData;
 
     return (
-        <div className="m-4 p-4 w-[250px] bg-slate-200 rounded-md hover:bg-slate-300">
-            <img className='res-logo rounded-md' src={CDN_URL+cloudinaryImageId} alt="restaurant logo" />
-            <h3 className='font-bold text-center py-3 text-lg'>{name}</h3>
+        <div className="m-5 w-[300px] h-[320px] border border-black hover:bg-slate-100 p-2">
+            <img className='bg-cover object-cover' src={CDN_URL+cloudinaryImageId} alt="restaurant logo" />
+            <h3 className='font-bold py-3 text-lg'>{name}</h3>
             <h6>{cuisines.join(", ")}</h6>
             <h4>{avgRating} ⭐</h4>
-            {/* <h4>{costForTwo / 100} FOR TWO</h4> */}
             <h4>{costForTwo}</h4>
             <h4>{sla.deliveryTime} mins</h4>
         </div>

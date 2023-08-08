@@ -9,8 +9,10 @@ const AppLayout = () => {
   return (
     <Provider store={appStore}>
       <React.Fragment>
-        <Header/>
-        <Outlet />
+        <Header />
+        <div className="pt-[10vh]">
+          <Outlet />
+        </div>
       </React.Fragment>
     </Provider>
   )

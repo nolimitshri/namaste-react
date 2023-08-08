@@ -1,33 +1,33 @@
-*{
-    margin: 0px;
-    padding: 0px;
-}
-
-.header{
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
-}
-
-.logo img{
-    width: 100px;
-}
-
-.nav-items > ul {
-    display: flex;
-    list-style: none;
-    margin-top: 1.5em;
-    align-items: center;
-    margin-right: 1.1em;
-}
-
-.nav-items li {
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.2em;
-}
-
-.loginBtn{
-    padding: 0px 15px;
+/* .hover-effect{
     cursor: pointer;
+    text-decoration: none;
+}
+
+.hover-effect:hover{
+    text-decoration: underline;
+} */
+
+.hover-effect {
+    display: inline-block;
+    position: relative;
+    color: black;
+    cursor: pointer;
+  }
+  
+.hover-effect::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-effect:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
