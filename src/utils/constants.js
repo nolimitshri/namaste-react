@@ -4,9 +4,9 @@ export const LOGO_URL = "https://img.freepik.com/free-vector/detailed-chef-logo-
 
 export const SWIGGY_API = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5169378&lng=77.17655479999999&page_type=DESKTOP_WEB_LISTING";
 
-// export const SWIGGY_API = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5169378&lng=77.17655479999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
-
-// export const RES_API_FR = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5169378&lng=77.17655479999999&restaurantId="
+export const SWIGGY_API_COORDS = (lat, lng) => {
+    return `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`;
+}
 
 export const RES_API_FR = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5169378&lng=77.17655479999999&restaurantId="
 

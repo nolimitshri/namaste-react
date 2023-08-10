@@ -8,7 +8,6 @@ const CategoryList = ({items}) => {
 
     const dispatch = useDispatch();
 
-
     const handleAddItem = (item) => {
         // Dispatch an action
         dispatch(addItem(item))
@@ -20,22 +19,26 @@ const CategoryList = ({items}) => {
         <div>
             {items.map((item, index) => {
                 return (
-                    <div key={index} className="border-gray-300 border-b-2 p-2 m-2 flex justify-between h-[150px]">
+                    <div key={index} className="border-gray-300 border-b-2 mt-5 flex justify-between h-[150px]">
                         <div className="w-9/12">
-                            <div className="font-semibold text-left mb-2">
+                            <div className="font-semibold text-left mb-1">
                                 <span>{item.card.info.name}</span>
-                                <span>{isNaN(item.card.info.defaultPrice || item.card.info.price) ? "" : ` ₹${(item.card.info.defaultPrice/100) || (item.card.info.price/100)}`}</span>
                             </div>
+                            <span className="mb-2 block">
+                                {isNaN(item.card.info.defaultPrice || item.card.info.price) ? "" : ` ₹${(item.card.info.defaultPrice/100) || (item.card.info.price/100)}`}
+                            </span>
                             <p className="text-left text-xs">
                                 {item.card.info.description}
                             </p>
                         </div>
                         <div className="p-4 w-3/12">
-                            <div className="absolute mx-[32px] shadow-md">
+
+                            <img src={CDN_URL + item.card.info.imageId} alt="Food Pic"  className="shadow-md rounded-md"/>
+
+                            <div className="flex items-center justify-center relative bottom-7">
                             {/* Dispatching an action */}
-                                <button className="p-1 mt-[41px] rounded-sm bg-green-500 text-white text-sm" onClick={() => handleAddItem(item)}>ADD +</button>
+                                <button className="p-2 rounded-md bg-green-500 text-white text-lg hover:text-green-500 hover:bg-white hover:border-green-500 hover:border-2" onClick={() => handleAddItem(item)}>ADD +</button>
                             </div>
-                            <img src={CDN_URL + item.card.info.imageId} alt="Food Pic" className="w-full shadow-md"/>
                         </div>
                     </div>
             )
